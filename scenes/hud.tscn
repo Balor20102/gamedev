@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://krp6dvqt3qmv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_60v88"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.101961, 0.101961, 0.101961, 1)
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 425.0
+offset_top = 150.0
+offset_right = 625.0
+offset_bottom = 300.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_60v88")
+
+[node name="NextPieceLabel" type="Label" parent="."]
+offset_left = 430.0
+offset_top = 100.0
+offset_right = 603.0
+offset_bottom = 142.0
+theme_override_font_sizes/font_size = 30
+text = "NEXT PIECE:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverLabel" type="Label" parent="."]
+offset_left = 153.0
+offset_top = 99.0
+offset_right = 250.0
+offset_bottom = 122.0
+theme_override_font_sizes/font_size = 30
+text = "GAME OVER!"
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 131.0
+offset_top = 258.0
+offset_right = 200.0
+offset_bottom = 281.0
+theme_override_font_sizes/font_size = 30
+text = "SCORE: 0"
