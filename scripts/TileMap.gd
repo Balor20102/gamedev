@@ -83,8 +83,10 @@ func _ready():
 	new_game()
 	$HUD.get_node("StartButton").pressed.connect(new_game)
 	
+	
 func new_game():
 	#reset variabels
+	$HUD.get_node("StartButton").release_focus()
 	score = 0
 	speed = 1.0
 	game_running = true
