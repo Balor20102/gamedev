@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0ugo2icxwpbo"]
+[gd_scene load_steps=6 format=3 uid="uid://c0ugo2icxwpbo"]
 
 [ext_resource type="Texture2D" uid="uid://bwxneirljy70c" path="res://assets/blocks/tetrominoes.png" id="1_nhait"]
 [ext_resource type="Script" path="res://scripts/TileMap.gd" id="2_pfl4c"]
+[ext_resource type="PackedScene" uid="uid://krp6dvqt3qmv" path="res://scenes/hud.tscn" id="3_s7fwg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nhtwx"]
 texture = ExtResource("1_nhait")
@@ -52,3 +53,5 @@ layer_0/tile_data = PackedInt32Array(0, 458752, 0, 65536, 458752, 0, 131072, 458
 layer_1/name = "active"
 layer_1/tile_data = PackedInt32Array()
 script = ExtResource("2_pfl4c")
+
+[node name="HUD" parent="." instance=ExtResource("3_s7fwg")]
