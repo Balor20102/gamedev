@@ -23,7 +23,7 @@ bg_color = Color(0.768627, 0, 0.0117647, 1)
 offset_left = 425.0
 offset_top = 150.0
 offset_right = 625.0
-offset_bottom = 300.0
+offset_bottom = 344.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_60v88")
 
 [node name="NextPieceLabel" type="Label" parent="."]
