@@ -1,7 +1,7 @@
 [gd_scene load_steps=31 format=3 uid="uid://b2japo800y72h"]
 
 [ext_resource type="Texture2D" uid="uid://bu83rgeb0qiqn" path="res://scenes/Idle (32x32).png" id="1_dnut5"]
-[ext_resource type="Script" path="res://playerCharacter.gd" id="1_gb8ud"]
+[ext_resource type="Script" path="res://scripts/playerCharacter.gd" id="1_gb8ud"]
 [ext_resource type="Texture2D" uid="uid://kvak3cvwnd4i" path="res://scenes/Fall (32x32).png" id="3_38u3p"]
 [ext_resource type="Texture2D" uid="uid://b8nnorxdom3dp" path="res://scenes/Jump (32x32).png" id="4_55o3b"]
 [ext_resource type="Texture2D" uid="uid://di2tcqkihb3g2" path="res://scenes/Run (32x32).png" id="5_35p26"]
@@ -197,7 +197,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v56jl"]
-size = Vector2(21.5, 24)
+size = Vector2(15, 22)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 texture_filter = 1
@@ -205,10 +205,12 @@ scale = Vector2(2, 2)
 script = ExtResource("1_gb8ud")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3, 1.5)
+scale = Vector2(0.8125, 0.90625)
 sprite_frames = SubResource("SpriteFrames_pok0i")
 animation = &"running"
 frame_progress = 0.464611
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.25, 4)
+position = Vector2(-3, 2.5)
 shape = SubResource("RectangleShape2D_v56jl")

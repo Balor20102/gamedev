@@ -60,6 +60,7 @@ const ACCEL : float = 0.25
 
 #game piece variables
 var player_cor_x
+var player
 var piece_type
 var next_piece_type
 var rotation_index : int = 0
@@ -91,6 +92,7 @@ func new_game():
 	score = 0
 	speed = 3.0
 	game_running = true
+	Global.game_running = game_running
 	steps = [0, 0, 0] #0:left, 1:right, 2:down
 	rotation_index = randf_range(1,4)
 	$HUD.get_node("GameOverLabel").hide()
@@ -107,14 +109,20 @@ func new_game():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-#apply downward movement every frame
+	# apply downward movement every frame
 	if game_running:
+		if Input.is_action_just_pressed("q"):
+			rotate_piece()
 		steps[2] += speed
-		#move the piece
+
+		# move the piece
 		for i in range(steps.size()):
 			if steps[i] > steps_req:
 				move_piece(directions[i])
 				steps[i] = 0
+
+		player = local_to_map($CharacterBody2D.position)
+		player_death()
 		
 func pick_piece():
 	var piece
@@ -171,8 +179,8 @@ func move_piece(dir):
 			piece_atlas = next_piece_atlas
 			rotation_index = next_rotation_index
 			next_piece_type = pick_piece()
-			next_piece_atlas = Vector2i(shapes_full.find(next_piece_type),0)
-			next_rotation_index = randf_range(1,4)
+			next_piece_atlas = Vector2i(shapes_full.find(next_piece_type), 0)
+			next_rotation_index = randf_range(1, 4)
 			clear_panel()
 			create_piece()
 			check_game_over()
@@ -232,10 +240,13 @@ func clear_board():
 
 func check_game_over():
 	for i in active_piece:
-		if not is_free(i+ cur_pos):
+		
+		if not is_free(i + cur_pos):
 			land_piece()
 			$HUD.get_node("GameOverLabel").show()
 			game_running = false
+			Global.game_running = game_running
+			# Add any additional game over logic here
 
 func spawn_off_set(rotation):
 	var off_set = 0
@@ -249,7 +260,27 @@ func spawn_off_set(rotation):
 				off_set = i.y
 	return off_set
 	
-	
-	
-	
+func rotate_piece():
+	if can_rotate():
+		clear_piece()
+		rotation_index = (rotation_index + 1) % 4
+		active_piece = piece_type[rotation_index]
+		draw_piece(active_piece, cur_pos, piece_atlas)
+		
+func can_rotate():
+	var cr = true
+	var temp_rotation_index = (rotation_index + 1) % 4
+	for i in piece_type[temp_rotation_index]:
+		if not is_free(i + cur_pos):
+			cr = false
+	return cr
 
+func player_death():
+	for i in active_piece:
+		var absolute_position = i + cur_pos
+		if absolute_position.x == player.x and absolute_position.y == player.y -1:
+			land_piece()
+			$HUD.get_node("GameOverLabel").show()
+			game_running = false
+			Global.game_running = game_running
+			# Add any additional game over logic here
