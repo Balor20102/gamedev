@@ -19,15 +19,15 @@ var o_180 := [Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1), Vector2i(1, 1)]
 var o_270 := [Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1), Vector2i(1, 1)]
 var o := [o_0, o_90, o_180, o_270]
 
-var z_0 := [Vector2i(0, 1), Vector2i(1, 1), Vector2i(1, 2), Vector2i(2, 2)]
+var z_0 := [Vector2i(0, 0), Vector2i(1, 0), Vector2i(1, 1), Vector2i(2, 1)]
 var z_90 := [Vector2i(1, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(0, 2)]
-var z_180 := [Vector2i(0, 1), Vector2i(1, 1), Vector2i(1, 2), Vector2i(2, 2)]
+var z_180 := [Vector2i(0, 0), Vector2i(1, 0), Vector2i(1, 1), Vector2i(2, 1)]
 var z_270 := [Vector2i(1, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(0, 2)]
 var z := [z_0, z_90, z_180, z_270]
 
-var s_0 := [Vector2i(0, 1), Vector2i(1, 1), Vector2i(-1, 2), Vector2i(0, 2)]
+var s_0 := [Vector2i(0, 0), Vector2i(1, 0), Vector2i(-1, 1), Vector2i(0, 1)]
 var s_90 := [Vector2i(0, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(1, 2)]
-var s_180 := [Vector2i(0, 1), Vector2i(1, 1), Vector2i(-1, 2), Vector2i(0, 2)]
+var s_180 := [Vector2i(0, 0), Vector2i(1, 0), Vector2i(-1, 1), Vector2i(0, 1)]
 var s_270 := [Vector2i(0, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(1, 2)]
 var s := [s_0, s_90, s_180, s_270]
 
@@ -90,7 +90,7 @@ func new_game():
 	#reset variabels
 	$HUD.get_node("StartButton").release_focus()
 	score = 0
-	speed = 3.0
+	speed = 1.0
 	game_running = true
 	Global.game_running = game_running
 	steps = [0, 0, 0] #0:left, 1:right, 2:down
@@ -198,13 +198,15 @@ func is_free(pos):
 
 func land_piece():
 	# remove each segment from the active layer and move to board layer
+	score += 25
+	$HUD.get_node("ScoreLabel").text = "SCORE: " + str(score)
 	for i in active_piece:
 		erase_cell(active_layer, cur_pos + i)
 		set_cell(board_layer, cur_pos + i, tile_id, piece_atlas)
 
 func clear_panel():
-	for i in range(15,20):
-		for j in range(6,10):
+	for i in range(13,20):
+		for j in range(4,10):
 			erase_cell(active_layer, Vector2i(i,j))
 
 func check_rows():
@@ -278,7 +280,7 @@ func can_rotate():
 func player_death():
 	for i in active_piece:
 		var absolute_position = i + cur_pos
-		if absolute_position.x == player.x and absolute_position.y == player.y -1:
+		if absolute_position.x == player.x and absolute_position.y == player.y -1 and Global.jumping == false:
 			land_piece()
 			$HUD.get_node("GameOverLabel").show()
 			game_running = false

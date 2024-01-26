@@ -136,7 +136,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -152,7 +152,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"jumping",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -193,11 +193,11 @@ animations = [{
 }],
 "loop": true,
 "name": &"running",
-"speed": 5.0
+"speed": 20.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v56jl"]
-size = Vector2(15, 22)
+size = Vector2(15, 23)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 texture_filter = 1
@@ -208,9 +208,8 @@ script = ExtResource("1_gb8ud")
 position = Vector2(-3, 1.5)
 scale = Vector2(0.8125, 0.90625)
 sprite_frames = SubResource("SpriteFrames_pok0i")
-animation = &"running"
-frame_progress = 0.464611
+animation = &"jumping"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 2.5)
+position = Vector2(-3, 4)
 shape = SubResource("RectangleShape2D_v56jl")
