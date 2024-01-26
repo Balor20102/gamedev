@@ -94,6 +94,7 @@ func new_game():
 	game_running = true
 	Global.game_running = game_running
 	steps = [0, 0, 0] #0:left, 1:right, 2:down
+	#randomize rotation
 	rotation_index = randf_range(1,4)
 	$HUD.get_node("GameOverLabel").hide()
 	#clear everything
@@ -109,18 +110,17 @@ func new_game():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	# apply downward movement every frame
 	if game_running:
 		if Input.is_action_just_pressed("q"):
 			rotate_piece()
 		steps[2] += speed
-
+		# apply downward movement every frame
 		# move the piece
 		for i in range(steps.size()):
 			if steps[i] > steps_req:
 				move_piece(directions[i])
 				steps[i] = 0
-
+		# get players location related to the local map
 		player = local_to_map($CharacterBody2D.position)
 		player_death()
 		
@@ -146,7 +146,7 @@ func create_piece():
 	
 	cur_pos = Vector2i(player_cor_x, start_pos.y)
 
-	
+	#calculate off_set
 	if (player_cor_x > 8 - off_set and active_piece == i[0] or player_cor_x > 8 - off_set and active_piece == i[2] ):
 		cur_pos.x =  8 - off_set
 	elif (player_cor_x > 10 - off_set ):
@@ -197,9 +197,10 @@ func is_free(pos):
 	return get_cell_source_id(board_layer, pos) == -1
 
 func land_piece():
-	# remove each segment from the active layer and move to board layer
+	# up the score
 	score += 25
 	$HUD.get_node("ScoreLabel").text = "SCORE: " + str(score)
+	# remove each segment from the active layer and move to board layer
 	for i in active_piece:
 		erase_cell(active_layer, cur_pos + i)
 		set_cell(board_layer, cur_pos + i, tile_id, piece_atlas)
@@ -278,6 +279,7 @@ func can_rotate():
 	return cr
 
 func player_death():
+	# checks if a block is above the player and if player is on land
 	for i in active_piece:
 		var absolute_position = i + cur_pos
 		if absolute_position.x == player.x and absolute_position.y == player.y -1 and Global.jumping == false:
