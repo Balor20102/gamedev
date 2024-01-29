@@ -2,14 +2,14 @@ extends TileMap
 
 #tetrominoes
 var i_0 := [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1)]
-var i_90 := [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 3)]
-var i_180 := [Vector2i(3, 1), Vector2i(2, 1), Vector2i(1, 1), Vector2i(0, 1)]
-var i_270 := [Vector2i(0, 3), Vector2i(0, 2), Vector2i(0, 1), Vector2i(0, 0)]
+var i_90 := [Vector2i(2, 0), Vector2i(2, 1), Vector2i(2, 2), Vector2i(2, 3)]
+var i_180 := [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2)]
+var i_270 := [Vector2i(1, 0), Vector2i(1, 1), Vector2i(1, 2), Vector2i(1, 3)]
 var i := [i_0, i_90, i_180, i_270]
 
-var t_0 := [Vector2i(0, 1), Vector2i(-1, 2), Vector2i(-0, 2), Vector2i(1, 2)]
-var t_90 := [Vector2i(0, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(0, 2)]
-var t_180 := [Vector2i(1, 2), Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1)]
+var t_0 := [Vector2i(1, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1)]
+var t_90 := [Vector2i(1, 0), Vector2i(1, 1), Vector2i(2, 1), Vector2i(1, 2)]
+var t_180 := [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(1, 2)]
 var t_270 := [Vector2i(1, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(1, 2)]
 var t := [t_0, t_90, t_180, t_270]
 
@@ -20,25 +20,25 @@ var o_270 := [Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1), Vector2i(1, 1)]
 var o := [o_0, o_90, o_180, o_270]
 
 var z_0 := [Vector2i(0, 0), Vector2i(1, 0), Vector2i(1, 1), Vector2i(2, 1)]
-var z_90 := [Vector2i(1, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(0, 2)]
-var z_180 := [Vector2i(0, 0), Vector2i(1, 0), Vector2i(1, 1), Vector2i(2, 1)]
+var z_90 := [Vector2i(2, 0), Vector2i(1, 1), Vector2i(2, 1), Vector2i(1, 2)]
+var z_180 := [Vector2i(0, 1), Vector2i(1, 1), Vector2i(1, 2), Vector2i(2, 2)]
 var z_270 := [Vector2i(1, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(0, 2)]
 var z := [z_0, z_90, z_180, z_270]
 
-var s_0 := [Vector2i(0, 0), Vector2i(1, 0), Vector2i(-1, 1), Vector2i(0, 1)]
-var s_90 := [Vector2i(0, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(1, 2)]
-var s_180 := [Vector2i(0, 0), Vector2i(1, 0), Vector2i(-1, 1), Vector2i(0, 1)]
+var s_0 := [Vector2i(1, 0), Vector2i(2, 0), Vector2i(0, 1), Vector2i(1, 1)]
+var s_90 := [Vector2i(1, 0), Vector2i(1, 1), Vector2i(2, 1), Vector2i(2, 2)]
+var s_180 := [Vector2i(1, 1), Vector2i(2, 1), Vector2i(0, 2), Vector2i(1, 2)]
 var s_270 := [Vector2i(0, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(1, 2)]
 var s := [s_0, s_90, s_180, s_270]
 
-var l_0 := [Vector2i(2, 1), Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2)]
-var l_90 := [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(1, 2)]
+var l_0 := [Vector2i(2, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1)]
+var l_90 := [Vector2i(1, 0), Vector2i(1, 1), Vector2i(1, 2), Vector2i(2, 2)]
 var l_180 := [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(0, 2)]
 var l_270 := [Vector2i(0, 0), Vector2i(1, 0), Vector2i(1, 1), Vector2i(1, 2)]
 var l := [l_0, l_90, l_180, l_270]
 
-var j_0 := [Vector2i(0, 1), Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2)]
-var j_90 := [Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1), Vector2i(0, 2)]
+var j_0 := [Vector2i(0, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1)]
+var j_90 := [Vector2i(1, 0), Vector2i(2, 0), Vector2i(1, 1), Vector2i(1, 2)]
 var j_180 := [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(2, 2)]
 var j_270 := [Vector2i(1, 0), Vector2i(1, 1), Vector2i(0, 2), Vector2i(1, 2)]
 var j := [j_0, j_90, j_180, j_270]
@@ -53,13 +53,13 @@ const ROWS : int = 20
 const directions := [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.DOWN]
 var steps : Array
 const steps_req : int = 50
-const start_pos := Vector2i(0,1)
+const start_pos := Vector2i(5,1)
 var cur_pos : Vector2i
 var speed : float
 const ACCEL : float = 0.25
 
 #game piece variables
-var player_cor_x
+var player_cor_y
 var player
 var piece_type
 var next_piece_type
@@ -68,6 +68,7 @@ var next_rotation_index : int = 0
 var active_piece : Array
 
 #game variables
+var level : int
 var score : int
 const REWARD : int = 100
 var game_running : bool
@@ -90,10 +91,16 @@ func new_game():
 	#reset variabels
 	$HUD.get_node("StartButton").release_focus()
 	score = 0
-	speed = 1.0
+	$HUD.get_node("ScoreLabel").text = "SCORE: " + str(score)
+	speed = 3.0
+	level = 1
+	$HUD.get_node("LevelLabel").text = "LEVEL: " + str(level)
 	game_running = true
 	Global.game_running = game_running
 	steps = [0, 0, 0] #0:left, 1:right, 2:down
+	player = local_to_map($CharacterBody2D.position)
+
+	player_cor_y = player.y
 	#randomize rotation
 	rotation_index = randf_range(1,4)
 	$HUD.get_node("GameOverLabel").hide()
@@ -113,6 +120,12 @@ func _process(delta):
 	if game_running:
 		if Input.is_action_just_pressed("q"):
 			rotate_piece()
+		if Input.is_action_pressed("block_left"):
+			steps[0] += 10
+			push_player_left()
+		elif Input.is_action_pressed("block_right"):
+			steps[1] += 10
+			push_player_right()
 		steps[2] += speed
 		# apply downward movement every frame
 		# move the piece
@@ -122,6 +135,19 @@ func _process(delta):
 				steps[i] = 0
 		# get players location related to the local map
 		player = local_to_map($CharacterBody2D.position)
+		
+		if (player.y < player_cor_y and Global.jumping == false):
+			var diffrence = player_cor_y - player.y
+			score += 25 * diffrence
+			player_cor_y = player.y
+			$HUD.get_node("ScoreLabel").text = "SCORE: " + str(score)
+			
+		if (player.y <= 4):
+			level += 1
+			$HUD.get_node("LevelLabel").text = "LEVEL: " + str(level)
+			speed = speed * level
+			clear_board()
+			get_node("CharacterBody2D").position = Vector2i(177,640)
 		player_death()
 		
 func pick_piece():
@@ -138,23 +164,10 @@ func pick_piece():
 func create_piece():
 	#reset variables
 	steps = [0, 0, 0] #0:left, 1:right, 2:down
-	player_cor_x = local_to_map($CharacterBody2D.position).x
-	
+	cur_pos = start_pos
 	active_piece = piece_type[rotation_index]
-	
-	var off_set = spawn_off_set(rotation_index)
-	
-	cur_pos = Vector2i(player_cor_x, start_pos.y)
-
-	#calculate off_set
-	if (player_cor_x > 8 - off_set and active_piece == i[0] or player_cor_x > 8 - off_set and active_piece == i[2] ):
-		cur_pos.x =  8 - off_set
-	elif (player_cor_x > 10 - off_set ):
-		cur_pos.x =  10 - off_set
-	elif (player_cor_x < 1 + off_set):
-		cur_pos.x = 0 + off_set
-		
 	draw_piece(active_piece, cur_pos, piece_atlas)
+		
 	#show next piece
 	draw_piece(next_piece_type[next_rotation_index], Vector2i(15,6), next_piece_atlas)
 	
@@ -197,9 +210,6 @@ func is_free(pos):
 	return get_cell_source_id(board_layer, pos) == -1
 
 func land_piece():
-	# up the score
-	score += 25
-	$HUD.get_node("ScoreLabel").text = "SCORE: " + str(score)
 	# remove each segment from the active layer and move to board layer
 	for i in active_piece:
 		erase_cell(active_layer, cur_pos + i)
@@ -288,3 +298,15 @@ func player_death():
 			game_running = false
 			Global.game_running = game_running
 			# Add any additional game over logic here
+
+func push_player_right():
+	for i in active_piece:
+		var absolute_position = i + cur_pos
+		if absolute_position.x == player.x-1 and (absolute_position.y == player.y or absolute_position.y == player.y +1) and is_free(absolute_position):
+			get_node("CharacterBody2D").position += Vector2(16, 0)
+
+func push_player_left():
+	for i in active_piece:
+		var absolute_position = i + cur_pos
+		if absolute_position.x == player.x+1 and (absolute_position.y == player.y or absolute_position.y == player.y +1) and is_free(absolute_position) :
+			get_node("CharacterBody2D").position += Vector2(-16, 0)

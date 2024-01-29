@@ -20,17 +20,17 @@ bg_color = Color(0.768627, 0, 0.0117647, 1)
 [node name="HUD" type="CanvasLayer"]
 
 [node name="Panel" type="Panel" parent="."]
-offset_left = 425.0
-offset_top = 150.0
-offset_right = 625.0
-offset_bottom = 344.0
+offset_left = 426.0
+offset_top = 83.0
+offset_right = 626.0
+offset_bottom = 277.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_60v88")
 
 [node name="NextPieceLabel" type="Label" parent="."]
-offset_left = 430.0
-offset_top = 100.0
-offset_right = 603.0
-offset_bottom = 142.0
+offset_left = 431.0
+offset_top = 27.0
+offset_right = 604.0
+offset_bottom = 69.0
 theme_override_font_sizes/font_size = 30
 text = "NEXT PIECE:"
 horizontal_alignment = 1
@@ -45,10 +45,10 @@ theme_override_font_sizes/font_size = 30
 text = "GAME OVER!"
 
 [node name="ScoreLabel" type="Label" parent="."]
-offset_left = 454.0
-offset_top = 355.0
-offset_right = 583.0
-offset_bottom = 397.0
+offset_left = 458.0
+offset_top = 297.0
+offset_right = 587.0
+offset_bottom = 339.0
 theme_override_font_sizes/font_size = 30
 text = "SCORE: 0"
 
@@ -62,3 +62,11 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_vobgl")
 theme_override_styles/hover = SubResource("StyleBoxFlat_gmheo")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_rl1xo")
 text = "New Game"
+
+[node name="LevelLabel" type="Label" parent="."]
+offset_left = 462.0
+offset_top = 346.0
+offset_right = 591.0
+offset_bottom = 388.0
+theme_override_font_sizes/font_size = 30
+text = "LEVEL: 1"
