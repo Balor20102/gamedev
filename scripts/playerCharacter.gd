@@ -20,10 +20,12 @@ func _physics_process(delta):
 		# Add the gravity.
 		if not is_on_floor():
 			velocity.y += gravity * delta
+			Global.jumping = true
 			sprite_2d.play("jumping")
 
 		# Handle jump.
 		if not is_on_floor() and velocity.y  > 0:
+			Global.jumping = true
 			sprite_2d.play("falling")
 			
 		if is_on_floor():

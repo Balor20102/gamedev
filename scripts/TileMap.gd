@@ -70,7 +70,7 @@ var active_piece : Array
 #game variables
 var level : int
 var score : int
-const REWARD : int = 100
+const REWARD : int = 50
 var game_running : bool
 
 #tilemap variables
@@ -146,6 +146,8 @@ func _process(delta):
 			level += 1
 			$HUD.get_node("LevelLabel").text = "LEVEL: " + str(level)
 			speed = speed * level
+			score += 100
+			$HUD.get_node("ScoreLabel").text = "SCORE: " + str(score)
 			clear_board()
 			get_node("CharacterBody2D").position = Vector2i(177,640)
 		player_death()
@@ -169,7 +171,7 @@ func create_piece():
 	draw_piece(active_piece, cur_pos, piece_atlas)
 		
 	#show next piece
-	draw_piece(next_piece_type[next_rotation_index], Vector2i(15,6), next_piece_atlas)
+	draw_piece(next_piece_type[next_rotation_index], Vector2i(15,4), next_piece_atlas)
 	
 func clear_piece():
 	for i in active_piece:
@@ -302,11 +304,11 @@ func player_death():
 func push_player_right():
 	for i in active_piece:
 		var absolute_position = i + cur_pos
-		if absolute_position.x == player.x-1 and (absolute_position.y == player.y or absolute_position.y == player.y +1) and is_free(absolute_position):
+		if absolute_position.x == player.x-1 and (absolute_position.y == player.y or absolute_position.y == player.y +1) and is_free(Vector2i(absolute_position.x +1, absolute_position.y) and player.x < 10):
 			get_node("CharacterBody2D").position += Vector2(16, 0)
 
 func push_player_left():
 	for i in active_piece:
 		var absolute_position = i + cur_pos
-		if absolute_position.x == player.x+1 and (absolute_position.y == player.y or absolute_position.y == player.y +1) and is_free(absolute_position) :
+		if absolute_position.x == player.x+1 and (absolute_position.y == player.y or absolute_position.y == player.y +1) and is_free(Vector2i(absolute_position.x -1, absolute_position.y)) and player.x > 0:
 			get_node("CharacterBody2D").position += Vector2(-16, 0)

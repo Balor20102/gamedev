@@ -61,4 +61,4 @@ script = ExtResource("2_pfl4c")
 [node name="HUD" parent="." instance=ExtResource("3_s7fwg")]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("4_k4oj3")]
-position = Vector2(121, 122.81)
+position = Vector2(202, 645.999)
